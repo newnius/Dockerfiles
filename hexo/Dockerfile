@@ -15,4 +15,4 @@ ADD bootstrap.sh /etc/bootstrap.sh
 
 WORKDIR /blog
 
-ENTRYPOINT ["bash", "/etc/bootstrap.sh", "nothing"]
+CMD ["bash", "/etc/bootstrap.sh", "nothing"]

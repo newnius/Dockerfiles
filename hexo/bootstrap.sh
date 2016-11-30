@@ -2,6 +2,7 @@
 
 if [ "$1" == "server" ]; then
   # start hexo server
+  echo "starting hexo..."
   hexo server
 else
   # do nothing, just wait
