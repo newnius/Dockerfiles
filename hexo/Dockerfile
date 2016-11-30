@@ -9,7 +9,7 @@ RUN npm install hexo-generator-feed --save
 #Local Search
 RUN npm install hexo-generator-searchdb --save
 
-RUN npm install hexo-algolia --save
+RUN npm install --save hexo-algolia
 
 ADD bootstrap.sh /etc/bootstrap.sh
 
