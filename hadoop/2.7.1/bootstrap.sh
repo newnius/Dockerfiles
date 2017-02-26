@@ -13,6 +13,11 @@ cd $HADOOP_PREFIX/share/hadoop/common ; for cp in ${ACP//,/ }; do  echo == $cp; 
 cp /mnt/hadoop-config/* $HADOOP_PREFIX/etc/hadoop/
 
 service sshd start
+
+## stop all in case master starts far behind
+$HADOOP_PREFIX/sbin/stop-yarn.sh
+$HADOOP_PREFIX/sbin/stop-dfs.sh
+
 $HADOOP_PREFIX/sbin/start-dfs.sh
 $HADOOP_PREFIX/sbin/start-yarn.sh
 $HADOOP_PREFIX/sbin/mr-jobhistory-daemon.sh start historyserver
