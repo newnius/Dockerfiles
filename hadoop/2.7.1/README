@@ -1,8 +1,8 @@
 # based on sequenceiq/hadoop-docker
 
-## create a hadoop cluster in swarm mode
+## Create a hadoop cluster in swarm mode
 
-`--hostname` need 1.13 or higher
+`--hostname` needs 1.13 or higher
 
 ```
 docker service create \
@@ -10,9 +10,6 @@ docker service create \
 --network swarm-net \
 --hostname hadoop-master \
 --replicas 1 \
---mount type=bind,source=/mnt/data/hadoop/hdfs/master,target=/tmp/hadoop-root \
---mount type=bind,source=/mnt/data/hadoop/logs/master,target=/usr/local/hadoop/logs \
---mount type=bind,source=/mnt/data/hadoop/config,target=/mnt/hadoop-config \
 --endpoint-mode dnsrr \
 newnius/hadoop
 ```
@@ -23,9 +20,6 @@ docker service create \
 --network swarm-net \
 --hostname hadoop-slave1 \
 --replicas 1 \
---mount type=bind,source=/mnt/data/hadoop/hdfs/slave1,target=/tmp/hadoop-root \
---mount type=bind,source=/mnt/data/hadoop/logs/slave1,target=/usr/local/hadoop/logs \
---mount type=bind,source=/mnt/data/hadoop/config,target=/mnt/hadoop-config \
 --endpoint-mode dnsrr \
 newnius/hadoop
 ```
@@ -36,9 +30,6 @@ docker service create \
 --network swarm-net \
 --hostname hadoop-slave2 \
 --replicas 1 \
---mount type=bind,source=/mnt/data/hadoop/hdfs/slave2,target=/tmp/hadoop-root \
---mount type=bind,source=/mnt/data/hadoop/logs/slave2,target=/usr/local/hadoop/logs \
---mount type=bind,source=/mnt/data/hadoop/config,target=/mnt/hadoop-config \
 --endpoint-mode dnsrr \
 newnius/hadoop
 ```
@@ -49,9 +40,6 @@ docker service create \
 --network swarm-net \
 --hostname hadoop-slave3 \
 --replicas 1 \
---mount type=bind,source=/mnt/data/hadoop/hdfs/slave3,target=/tmp/hadoop-root \
---mount type=bind,source=/mnt/data/hadoop/logs/slave3,target=/usr/local/hadoop/logs \
---mount type=bind,source=/mnt/data/hadoop/config,target=/mnt/hadoop-config \
 --endpoint-mode dnsrr \
 newnius/hadoop
 ```
