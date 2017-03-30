@@ -5,3 +5,9 @@ RUN docker-php-source extract \
 && a2enmod rewrite \
 && a2enmod ssl \
 && docker-php-source delete
+
+ADD php.ini /usr/local/etc/php/
+
+ADD apache2.conf /etc/apache2/
+
+ADD security.conf /etc/apache2/conf-available/
