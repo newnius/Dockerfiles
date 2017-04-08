@@ -83,3 +83,5 @@ bin/hadoop dfs -put etc/hadoop/* /user/root/input
 YARN: hadoop-master:8088
 
 HDFS: hadoop-master:50070
+
+_Proxy needed, e.g. newnius/docker-proxy_
