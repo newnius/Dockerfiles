@@ -13,4 +13,4 @@ RUN apt-get update  && \
         apt-get clean && \
         rm -rf /var/cache/apt/* /var/lib/apt/lists/*
 
-ENTRYPOINT ["/usr/bin/lantern", "--configdir=/root", "--headless=true", "--proxyall=true", "--startup=false", "--clear-proxy-settings=false", "--addr=0.0.0.0:3128", "--uiaddr=0.0.0.0:8080", "--socksaddr=0.0.0.0:1080"]
+ENTRYPOINT ["/usr/bin/lantern", "--configdir=/root", "--headless=true", "--proxyall=true", "--startup=false", "--clear-proxy-settings=false", "--addr=0.0.0.0:3128", "--uiaddr=lantern:8080", "--socksaddr=0.0.0.0:1080"]

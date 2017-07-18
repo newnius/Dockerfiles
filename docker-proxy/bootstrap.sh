@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /bin/sh
 
 # from https://github.com/danielguerra69/alpine-sshd
 if [ ! -f "/etc/ssh/ssh_host_rsa_key" ]; then
@@ -11,5 +11,6 @@ if [ ! -f "/etc/ssh/ssh_host_dsa_key" ]; then
 fi
 
 
-/etc/init.d/sshd start
+/usr/sbin/sshd
+
 ssh -t -t -D 0.0.0.0:7001 -o StrictHostKeyChecking=no localhost
