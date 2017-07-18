@@ -1,6 +1,6 @@
 FROM sequenceiq/hadoop-docker:2.7.1
 
-MAINTAINER Newnius <newnius.cn@gmail.com>
+MAINTAINER Newnius <docker@newnius.com>
 
 ADD bootstrap.sh /etc/bootstrap.sh
 

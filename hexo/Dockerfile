@@ -1,6 +1,6 @@
 FROM node:latest
 
-MAINTAINER Newnius <newnius.cn@gmail.com>
+MAINTAINER Newnius <docker@newnius.com>
 
 RUN apt-get -y update && apt-get -y install git &&  npm install -g hexo-cli
 

@@ -1,6 +1,6 @@
 FROM sequenceiq/spark:1.6.0
 
-MAINTAINER Newnius <newnius.cn@gmail.com>
+MAINTAINER Newnius <docker@newnius.com>
 
 ADD bootstrap.sh /etc/bootstrap.sh
 
