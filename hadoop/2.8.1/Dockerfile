@@ -49,7 +49,7 @@ ADD slaves $HADOOP_HOME/etc/hadoop/slaves
 
 RUN sed -i "s|export JAVA_HOME=.*|export JAVA_HOME=${JAVA_HOME}\nexport HADOOP_HOME=${HADOOP_HOME}\nexport HADOOP_PREFIX=${HADOOP_PREFIX}|g" ${HADOOP_PREFIX}/etc/hadoop/hadoop-env.sh
 
-RUN sed -i "s|export HADOOP_CONF_DIR=.*|export HADOOP_CONF_DIR=${HADOOP_PREFIX}/etc/hadoop/" ${HADOOP_PREFIX}/etc/hadoop/hadoop-env.sh
+RUN sed -i "s|export HADOOP_CONF_DIR=.*|export HADOOP_CONF_DIR=${HADOOP_PREFIX}/etc/hadoop/|g" ${HADOOP_PREFIX}/etc/hadoop/hadoop-env.sh
 
 WORKDIR $HADOOP_HOME
 
