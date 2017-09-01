@@ -46,7 +46,10 @@ ADD mapred-site.xml $HADOOP_HOME/etc/hadoop/mapred-site.xml
 ADD yarn-site.xml $HADOOP_HOME/etc/hadoop/yarn-site.xml
 ADD slaves $HADOOP_HOME/etc/hadoop/slaves
 
-RUN sed -i "/^export JAVA_HOME/ s:.*:export JAVA_HOME=${JAVA_HOME}\nexport HADOOP_HOME=${HADOOP_HOME}\nexport HADOOP_PREFIX=${HADOOP_PREFIX}:" ${HADOOP_HOME}/etc/hadoop/hadoop-env.sh
+
+RUN sed -i "/^export JAVA_HOME=.*/c export JAVA_HOME=${JAVA_HOME}\nexport HADOOP_HOME=${HADOOP_HOME}\nexport HADOOP_PREFIX=${HADOOP_PREFIX}/" etc/hadoop/hadoop-env.sh
+
+RUN sed -i "/^export HADOOP_CONF_DIR=.*/c export HADOOP_CONF_DIR=$HADOOP_PREFIX/etc/hadoop/" $HADOOP_PREFIX/etc/hadoop/hadoop-env.sh
 
 RUN sed -i '/^export HADOOP_CONF_DIR/ s:.*:export HADOOP_CONF_DIR=$HADOOP_PREFIX/etc/hadoop/:' $HADOOP_PREFIX/etc/hadoop/hadoop-env.sh
 
