@@ -26,7 +26,7 @@ RUN echo "Port 2122" >> /etc/ssh/sshd_config
 RUN wget -O hadoop.tar.gz https://archive.apache.org/dist/hadoop/common/hadoop-2.8.1/hadoop-2.8.1.tar.gz && \
 tar -xzf hadoop.tar.gz -C /usr/local/ && rm hadoop.tar.gz
 
-RUN ln -s /usr/local/hadoop-2.7.4 /usr/local/hadoop
+RUN ln -s /usr/local/hadoop-2.8.1 /usr/local/hadoop
 
 ENV HADOOP_HOME /usr/local/hadoop
 ENV PATH $PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
@@ -47,9 +47,9 @@ ADD yarn-site.xml $HADOOP_HOME/etc/hadoop/yarn-site.xml
 ADD slaves $HADOOP_HOME/etc/hadoop/slaves
 
 
-RUN sed -i "s|export JAVA_HOME=.*|export JAVA_HOME=${JAVA_HOME}\nexport HADOOP_HOME=${HADOOP_HOME}\nexport HADOOP_PREFIX=${HADOOP_PREFIX}|g" $HADOOP_PREFIX/etc/hadoop/hadoop-env.sh
+RUN sed -i "s|export JAVA_HOME=.*|export JAVA_HOME=${JAVA_HOME}\nexport HADOOP_HOME=${HADOOP_HOME}\nexport HADOOP_PREFIX=${HADOOP_PREFIX}|g" ${HADOOP_PREFIX}/etc/hadoop/hadoop-env.sh
 
-RUN sed -i "s|export HADOOP_CONF_DIR=.*|export HADOOP_CONF_DIR=${HADOOP_PREFIX}/etc/hadoop/" $HADOOP_PREFIX/etc/hadoop/hadoop-env.sh
+RUN sed -i "s|export HADOOP_CONF_DIR=.*|export HADOOP_CONF_DIR=${HADOOP_PREFIX}/etc/hadoop/" ${HADOOP_PREFIX}/etc/hadoop/hadoop-env.sh
 
 WORKDIR $HADOOP_HOME
 
