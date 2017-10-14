@@ -1,8 +1,8 @@
-# based on sequenceiq/hadoop-docker
+# based on alpine
 
 ## Create a hadoop cluster in swarm mode
 
-`--hostname` needs 1.13 or higher
+`--hostname` needs docker 1.13 or higher
 
 ```
 docker service create \
@@ -66,7 +66,7 @@ bin/hadoop namenode -format
 
 ### Run a test job
 
-bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.8.1.jar grep input output 'dfs[a-z.]+'
+bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.4.jar grep input output 'dfs[a-z.]+'
 
 Note: there is no such dir default, you can add data by
 
@@ -84,4 +84,4 @@ YARN: hadoop-master:8088
 
 HDFS: hadoop-master:50070
 
-_Proxy needed, e.g. newnius/docker-proxy_
+_Proxy needed: newnius/docker-proxy_

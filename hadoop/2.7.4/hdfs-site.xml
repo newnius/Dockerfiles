@@ -17,30 +17,24 @@
 <!-- Put site-specific property overrides in this file. -->
 
 <configuration>
-
 	<property>
 		<name>dfs.permissions</name>
 		<value>false</value>
-	</property>
-	
+	</propert>
 	<property>
 		<name>dfs.namenode.secondary.http-address</name>
 		<value>hadoop-slave1:50090</value>
-	</property>	
+	</property>
 	<property>
 		<name>dfs.namenode.http-address</name>
 		<value>hadoop-master:50070</value>
 	</property>
-	
-	<property>   
-		<name>dfs.datanode.max.transfer.threads</name>   
-		<value>8192</value>    
+	<property>
+		<name>dfs.datanode.max.transfer.threads</name>
+		<value>8192</value>
 	</property>
-
-    <property>
-        <name>dfs.replication</name>
-        <value>3</value>
-    </property>
-
-
+	<property>
+		<name>dfs.replication</name>
+		<value>3</value>
+	</property>
 </configuration>

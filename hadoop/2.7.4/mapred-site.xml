@@ -17,8 +17,7 @@
 <!-- Put site-specific property overrides in this file. -->
 
 <configuration>
-
-	<property>	 	        		
+	<property>
 		<name>mapreduce.framework.name</name>
 		<value>yarn</value>
 	</property>
@@ -29,5 +28,5 @@
 	<property>
 		<name>mapreduce.jobhistory.webapp.address</name>
 		<value>hadoop-master:19888</value>
-	</property>	
+	</property>
 </configuration>
