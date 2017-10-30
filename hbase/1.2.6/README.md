@@ -79,4 +79,4 @@ bash bin/start-hbase.sh
 ```
 
 #### Browse
-Now you can see HBase cluster in `http://hadoop-master:16010` in browser. (`[newnius/docker-proxy](https://hub.docker.com/r/newnius/docker-proxy/)` needed.)
+Now you can see HBase cluster in `http://hadoop-master:16010` in browser. ([newnius/docker-proxy](https://hub.docker.com/r/newnius/docker-proxy/) needed.)
