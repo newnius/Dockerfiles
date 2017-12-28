@@ -1,3 +1,5 @@
 #!/bin/bash
 
-/var/www/html/build/env/bin/desktop 0.0.0.0:8888
+make apps
+
+/var/www/html/build/env/bin/desktop runserver 0.0.0.0:8888
