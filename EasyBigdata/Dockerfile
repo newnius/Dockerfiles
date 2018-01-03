@@ -1,17 +1,23 @@
-FROM ubuntu:16.04
+FROM alpine:3.7
+
 MAINTAINER Newnius <newnius.cn@gmail.com>
 
 USER root
 
-RUN apt-get update -y && \
-		apt-get install -y \
-			make \
+RUN apk update && \
+    apk add \
 			python3 \
 			python3-dev \
+			bash \
+			make \
 			gcc \
 			g++ \
-			libsasl2-dev \
-			libmysqlclient-dev
+			musl-dev \
+			mariadb-dev \
+			cyrus-sasl \
+			cyrus-sasl-dev
+
+RUN ln -s /usr/include/python3.6m /usr/include/python3.6
 
 WORKDIR /var/www/html
 
