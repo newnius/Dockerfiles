@@ -10,4 +10,4 @@ ADD bootstrap.sh /etc/bootstrap.sh
 
 WORKDIR /blog
 
-CMD ["/etc/bootstrap.sh", "development"]
+ENTRYPOINT ["/etc/bootstrap.sh", "development"]
