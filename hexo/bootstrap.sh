@@ -11,7 +11,7 @@ fi
 
 # run hexo as production / developemnt mode
 if [[ $1 == "production" ]]; then
-				hexo server
-else
 				hexo server -s
+else
+				hexo server
 fi
