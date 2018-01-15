@@ -5,8 +5,8 @@ git config --global user.email $GIT_EMAIL
 git config --global user.name $GIT_NAME
 
 # init hexo if dir is empty
-if ! [ "$(ls -A blog)" ]; then
-	hexo init blog && npm install blog
+if ! [ "$(ls -A ./ )" ]; then
+	hexo init && npm install
 fi
 
 # run hexo as production / developemnt mode

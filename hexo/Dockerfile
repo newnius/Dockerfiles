@@ -8,4 +8,6 @@ RUN npm install hexo-cli -g
 
 ADD bootstrap.sh /etc/bootstrap.sh
 
+WORKDIR /blog
+
 CMD ["/etc/bootstrap.sh", "development"]
