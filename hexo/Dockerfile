@@ -2,7 +2,7 @@ FROM node:9.3-alpine
 
 MAINTAINER Newnius <newnius.cn@gmail.com>
 
-RUN apk update && apk add git
+RUN apk --no-cache add git
 
 RUN npm install hexo-cli -g
 
