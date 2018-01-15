@@ -1,13 +1,17 @@
-#! /bin/bash
+#!/bin/sh
 
+# configure git
 git config --global user.email $GIT_EMAIL
 git config --global user.name $GIT_NAME
 
-if [ "$1" = "server" ]; then
-  # start hexo server
-  echo "starting hexo..."
-  hexo server
+# init hexo if dir is empty
+if ! [ "$(ls -A blog)" ]; then
+	hexo init blog && npm install blog
+fi
+
+# run hexo as production / developemnt mode
+if [[ $1 == "production" ]]; then
+				hexo server
 else
-  # do nothing, just wait
-  while true; do sleep 1000; done 
+				hexo server -s
 fi

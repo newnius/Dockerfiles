@@ -1,21 +1,11 @@
-FROM node:latest
+FROM node:9.3-alpine
 
-MAINTAINER Newnius <docker@newnius.com>
+MAINTAINER Newnius <newnius.cn@gmail.com>
 
-RUN apt-get -y update && apt-get -y install git &&  npm install -g hexo-cli
+RUN apk update && apk add git
 
-RUN npm install hexo-generator-feed --save
-
-#Local Search
-RUN npm install hexo-generator-searchdb --save
-
-RUN npm install --save hexo-algolia@0.2.0
-
-RUN npm install hexo-deployer-git --save
-
+RUN npm install hexo-cli -g
 
 ADD bootstrap.sh /etc/bootstrap.sh
 
-WORKDIR /blog
-
-ENTRYPOINT ["/etc/bootstrap.sh"]
+CMD ["/etc/bootstrap.sh", "development"]
