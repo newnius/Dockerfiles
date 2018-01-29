@@ -15,7 +15,9 @@ RUN apk update && \
 			musl-dev \
 			mariadb-dev \
 			cyrus-sasl \
-			cyrus-sasl-dev
+			cyrus-sasl-dev \
+			nginx \
+			linux-headers
 
 RUN ln -s /usr/include/python3.6m /usr/include/python3.6
 
