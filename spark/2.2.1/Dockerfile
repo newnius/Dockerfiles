@@ -6,7 +6,7 @@ RUN wget http://mirrors.ocf.berkeley.edu/apache/spark/spark-2.2.1/spark-2.2.1-bi
 	tar -xvf spark-2.2.1-bin-hadoop2.7.tgz -C /usr/local && \
 	rm spark-2.2.1-bin-hadoop2.7.tgz
 
-RUN ln -s /usr/local/spark-2.2.1 /usr/local/spark
+RUN ln -s /usr/local/spark-2.2.1-bin-hadoop2.7 /usr/local/spark
 
 ENV SPARK_HOME /usr/local/spark
 
