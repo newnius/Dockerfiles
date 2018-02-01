@@ -2,7 +2,7 @@ FROM newnius/hadoop:2.8.1
 
 MAINTAINER Newnius <newnius.cn@gmail.com>
 
-RUN wget -O spark-2.2.1.tgz http://mirrors.ocf.berkeley.edu/apache/spark/spark-2.2.1/spark-2.2.1-bin-hadoop2.7.tgz && \
+RUN wget http://mirrors.ocf.berkeley.edu/apache/spark/spark-2.2.1/spark-2.2.1-bin-hadoop2.7.tgz && \
 	tar -xvf spark-2.2.1-bin-hadoop2.7.tgz -C /usr/local && \
 	rm spark-2.2.1-bin-hadoop2.7.tgz
 
