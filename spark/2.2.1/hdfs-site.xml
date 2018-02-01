@@ -20,7 +20,7 @@
 	<property>
 		<name>dfs.permissions</name>
 		<value>false</value>
-	</propert>
+	</property>
 	<property>
 		<name>dfs.namenode.secondary.http-address</name>
 		<value>spark-slave1:50090</value>
