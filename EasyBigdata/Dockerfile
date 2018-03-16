@@ -21,6 +21,8 @@ RUN apk update && \
 
 RUN ln -s /usr/include/python3.6m /usr/include/python3.6
 
+RUN ln -s /usr/include/python3.6m /usr/include/python
+
 WORKDIR /var/www/html
 
 ADD bootstrap.sh /etc/bootstrap.sh
