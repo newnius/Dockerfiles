@@ -21,7 +21,7 @@ RUN apk update && \
 
 RUN ln -s /usr/include/python3.6m /usr/include/python3.6
 
-RUN ln -s /usr/include/python3.6m /usr/include/python
+RUN ln -s /usr/bin/python3.6 /usr/bin/python
 
 WORKDIR /var/www/html
 
