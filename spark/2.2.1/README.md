@@ -59,7 +59,8 @@ sbin/start-dfs.sh
 ### Run Hello World
 ```bash
 spark-submit \
-	--master yarn-cluster \
+	--master yarn \
+	--deploy-mode cluster \
 	--class org.apache.spark.examples.JavaSparkPi \
 	./examples/jars/spark-examples_2.11-2.2.1.jar 100
 ```
@@ -78,7 +79,7 @@ _Proxy needed, e.g. [newnius/docker-proxy](https://hub.docker.com/r/newnius/dock
 docker service create \
 --name spark-master \
 --hostname spark-master \
---detach true \
+--detach=true \
 --network swarm-net \
 --replicas 1 \
 --mount type=bind,source=/mnt/data/spark/hdfs/master,target=/tmp/hadoop-root \
