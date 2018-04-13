@@ -1,1 +1,1 @@
-# Enjoy the world of Docker
+# Enjoy the beauty of Docker
