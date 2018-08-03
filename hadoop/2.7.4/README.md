@@ -4,41 +4,41 @@
 
 `--hostname` needs docker 1.13 or higher
 
-```
+```bash
 docker service create \
 --name hadoop-master \
---network swarm-net \
 --hostname hadoop-master \
+--network swarm-net \
 --replicas 1 \
 --endpoint-mode dnsrr \
 newnius/hadoop
 ```
 
-```
+```bash
 docker service create \
 --name hadoop-slave1 \
---network swarm-net \
 --hostname hadoop-slave1 \
+--network swarm-net \
 --replicas 1 \
 --endpoint-mode dnsrr \
 newnius/hadoop
 ```
 
-```
+```bash
 docker service create \
 --name hadoop-slave2 \
---network swarm-net \
 --hostname hadoop-slave2 \
+--network swarm-net \
 --replicas 1 \
 --endpoint-mode dnsrr \
 newnius/hadoop
 ```
 
-```
+```bash
 docker service create \
 --name hadoop-slave3 \
---network swarm-net \
 --hostname hadoop-slave3 \
+--network swarm-net \
 --replicas 1 \
 --endpoint-mode dnsrr \
 newnius/hadoop
@@ -49,33 +49,31 @@ newnius/hadoop
 In the first deploy, format dfs first
 
 ### stop cluster (in master)
-`sbin/stop-yarn.sh`
-`sbin/stop-dfs.sh`
-
-### remove previous data (in all nodes)
-clear all data in /tmp in all nodes
+```bash
+sbin/stop-dfs.sh
+```
 
 ### format hdfs (in master)
-```
+```bash
 bin/hadoop namenode -format
 ```
 
 ### start cluster (in master)
-`sbin/start-dfs.sh`
-`sbin/start-yarn.sh`
+```bash
+sbin/start-dfs.sh
+```
 
 ### Run a test job
 
+```bash
+# prepare input data
+bin/hadoop dfs -mkdir -p /user/root/input
+
+bin/hadoop dfs -put etc/hadoop/* /user/root/input
+```
+```bash
 bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.4.jar grep input output 'dfs[a-z.]+'
 
-Note: there is no such dir default, you can add data by
-
-```
-bin/hadoop dfs -mkdir -p /user/root/input
-```
-and
-```
-bin/hadoop dfs -put etc/hadoop/* /user/root/input
 ```
 
 ### monitor cluster in browser
