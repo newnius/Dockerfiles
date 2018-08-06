@@ -1,64 +1,50 @@
 Run Aapache Hive with Docker
 
-## Create a hadoop cluster with Hive supported in swarm mode
+## Prequirements
 
-`--hostname` needs 1.13 or higher
+Assume you already have one Hadoop cluster whose master node host is `hadoop-master`;
 
-```
-docker service create \
---name hadoop-master \
---network swarm-net \
---hostname hadoop-master \
---replicas 1 \
---endpoint-mode dnsrr \
-newnius/hive:2.1.1
-```
+Assume you already have a Mysql server whose host is `mysql`;
+
+You can specify them in `conf/hive-site.xml`;
+
+## Start Hive Node
 
 ```
 docker service create \
---name hadoop-slave1 \
---network swarm-net \
---hostname hadoop-slave1 \
---replicas 1 \
---endpoint-mode dnsrr \
-newnius/hadoop:2.7.4
-```
-
-```
-docker service create \
---name hadoop-slave2 \
---network swarm-net \
---hostname hadoop-slave2 \
---replicas 1 \
---endpoint-mode dnsrr \
-newnius/hadoop:2.7.4
-```
-
-```
-docker service create \
---name hadoop-slave3 \
---network swarm-net \
---hostname hadoop-slave3 \
---replicas 1 \
---endpoint-mode dnsrr \
-newnius/hadoop:2.7.4
+	--name hive \
+	--hostname hive \
+	--network swarm-net \
+	--replicas 1 \
+	--detach=true \
+	--mount type=bind,source=/etc/localtime,target=/etc/localtime \
+	newnius/hive:2.1.1
 ```
 
 ## Init && Test
+Init HIVE for the first time
 
-#### Start Hadoop
-Read `newnius/hadoop` to learn how to init hadoop
+#### Create HIVE dir in HDFS
 
-#### Mysql
 ```bash
-docker service create \
---name mysql \
---network swarm-net \
--e MYSQL_ROOT_PWDDWORD=123456 \
-mysql:5.7
+$HADOOP_HOME/bin/hdfs dfs -mkdir /tmp
+$HADOOP_HOME/bin/hdfs dfs -mkdir -p /user/hive/warehouse
+$HADOOP_HOME/bin/hdfs dfs -chmod g+w /tmp
+$HADOOP_HOME/bin/hdfs dfs -chmod g+w /user/hive/warehouse
 ```
 
-#### init hive
+#### Init MetaStore
+
 ```bash
-bash /etc/init_hive.sh
+schematool --dbType mysql --initSchema
+```
+
+#### Validate Installation
+
+Run `hive` to start the hive shell
+
+If the following command is executed successfully, then the installation is fine.
+
+```hive
+CREATE TABLE pokes (foo INT, bar STRING);
 ```

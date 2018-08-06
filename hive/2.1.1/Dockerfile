@@ -16,8 +16,8 @@ ENV HIVE_HOME /usr/local/hive
 
 ENV PATH $PATH:$HIVE_HOME/bin
 
-ADD mysql-connector-java-5.1.44-bin.jar $HIVE_HOME/lib
-#RUN wget -O $HIVE_HOME/lib/ http://central.maven.org/maven2/mysql/mysql-connector-java/5.1.44/mysql-connector-java-5.1.44.jar
+#ADD mysql-connector-java-5.1.44-bin.jar $HIVE_HOME/lib
+RUN wget -O $HIVE_HOME/lib/ http://central.maven.org/maven2/mysql/mysql-connector-java/5.1.44/mysql-connector-java-5.1.44.jar
 
 ADD hive-site.xml $HIVE_HOME/conf
 
