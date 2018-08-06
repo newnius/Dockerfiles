@@ -42,4 +42,6 @@ ADD backup-masters $HBASE_HOME/conf
 
 WORKDIR /usr/local/hbase
 
+ADD bootstrap.sh /etc/bootstrap.sh
+
 CMD ["/etc/bootstrap.sh", "-d"]
