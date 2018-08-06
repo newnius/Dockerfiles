@@ -23,11 +23,13 @@ RUN chown root:root /root/.ssh/config
 RUN echo "Port 2122" >> /etc/ssh/sshd_config
 
 # Install Apche HBase
-RUN wget -O apache-hbase.tar.gz http://mirrors.ocf.berkeley.edu/apache/hbase/1.2.6/hbase-1.2.6-bin.tar.gz && \
+ENV HBASE_VER 1.2.6.1
+
+RUN wget -O apache-hbase.tar.gz http://mirrors.ocf.berkeley.edu/apache/hbase/$HBASE_VER/hbase-$HBASE_VER-bin.tar.gz && \
 tar xzvf apache-hbase.tar.gz -C /usr/local/ && rm apache-hbase.tar.gz
 
 # Create a soft link to make future upgrade transparent
-RUN ln -s /usr/local/hbase-1.2.6 /usr/local/hbase
+RUN ln -s /usr/local/hbase-$HBASE_VER /usr/local/hbase
 
 ENV HBASE_HOME /usr/local/hbase
 ENV PATH $PATH:$HBASE_HOME/bin
