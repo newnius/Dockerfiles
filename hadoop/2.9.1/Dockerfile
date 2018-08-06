@@ -25,7 +25,7 @@ RUN echo "Port 2122" >> /etc/ssh/sshd_config
 # Install Hadoop
 ENV HADOOP_VER 2.9.1
 
-RUN wget -O hadoop.tar.gz https://archive.apache.org/dist/hadoop/common/hadoop-$HADOOP_VER/hadoop-$HADOOP_VER.tar.gz && \
+RUN wget -O hadoop.tar.gz http://archive.apache.org/dist/hadoop/common/hadoop-$HADOOP_VER/hadoop-$HADOOP_VER.tar.gz && \
 	tar -xzf hadoop.tar.gz -C /usr/local/ && rm hadoop.tar.gz
 
 RUN ln -s /usr/local/hadoop-$HADOOP_VER /usr/local/hadoop
