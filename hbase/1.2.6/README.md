@@ -6,9 +6,9 @@ Run Aapache HBase with Docker
 
 ```bash
 docker service create \
---name hadoop-master \
+--name hbase-master \
 --network swarm-net \
---hostname hadoop-master \
+--hostname hbase-master \
 --replicas 1 \
 --detach=true \
 --mount type=bind,source=/etc/localtime,target=/etc/localtime \
@@ -18,9 +18,9 @@ newnius/hbase:1.2.6
 
 ```bash
 docker service create \
---name hadoop-slave1 \
+--name hbase-slave1 \
 --network swarm-net \
---hostname hadoop-slave1 \
+--hostname hbase-slave1 \
 --replicas 1 \
 --detach=true \
 --mount type=bind,source=/etc/localtime,target=/etc/localtime \
@@ -30,9 +30,9 @@ newnius/hbase:1.2.6
 
 ```bash
 docker service create \
---name hadoop-slave2 \
+--name hbase-slave2 \
 --network swarm-net \
---hostname hadoop-slave2 \
+--hostname hbase-slave2 \
 --replicas 1 \
 --detach=true \
 --mount type=bind,source=/etc/localtime,target=/etc/localtime \
@@ -42,9 +42,9 @@ newnius/hbase:1.2.6
 
 ```bash
 docker service create \
---name hadoop-slave3 \
+--name hbase-slave3 \
 --network swarm-net \
---hostname hadoop-slave3 \
+--hostname hbase-slave3 \
 --replicas 1 \
 --detach=true \
 --mount type=bind,source=/etc/localtime,target=/etc/localtime \

@@ -31,7 +31,7 @@
   </property>
   <property>
     <name>hbase.master</name>
-    <value>hadoop-master:60000</value>
+    <value>hbase-master:60000</value>
   </property>
   <property>
     <name>hbase.zookeeper.quorum</name>
