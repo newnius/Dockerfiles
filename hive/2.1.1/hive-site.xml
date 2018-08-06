@@ -21,7 +21,7 @@
 	</property>
 	<property>
 		<name>hive.metastore.uris</name>
-		<value>thrift://hadoop-master:9083</value>
+		<value>thrift://localhost:9083</value>
 	</property>
 	<property>
 		<name>hive.metastore.schema.verification</name>
