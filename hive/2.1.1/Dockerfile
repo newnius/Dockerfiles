@@ -4,6 +4,9 @@ MAINTAINER Newnius <newnius.cn@gmail.com>
 
 USER root
 
+# Prerequisites
+RUN apk add --no-cache openssl openjdk8-jre rsync bash procps
+
 # Install Apche Hive
 ENV HIVE_VER 2.1.1
 
