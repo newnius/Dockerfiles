@@ -89,9 +89,9 @@ To access the web UI, deploy another (socks5) proxy to route the traffic.
 
 If you don't one, try [newnius/docker-proxy](https://hub.docker.com/r/newnius/docker-proxy/), it is rather easy to use.
 
-Visit [hadoop-master:8088](hadoop-master:8088) fo YARN pages.
+Visit [hadoop-master:8088](http://hadoop-master:8088) fo YARN pages.
 
-Visit [hadoop-master:50070](hadoop-master:50070) fo YARN pages.
+Visit [hadoop-master:50070](http://hadoop-master:50070) fo YARN pages.
 
 ## Custom configuration
 
