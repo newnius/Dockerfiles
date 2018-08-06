@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# setup hadoop
+bash /etc/start_hadoop.sh -bash
+
 hive --service metastore
 
 if [[ $1 == "-d" ]]; then
