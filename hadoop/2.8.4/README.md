@@ -11,7 +11,7 @@ docker service create \
   --detach=true \
   --endpoint-mode dnsrr \
   --mount type=bind,source=/etc/localtime,target=/etc/localtime \
-  newnius/hadoop:2.7.1
+  newnius/hadoop:2.8.4
 ```
 
 ## Start slaves
@@ -25,7 +25,7 @@ docker service create \
   --detach=true \
   --endpoint-mode dnsrr \
   --mount type=bind,source=/etc/localtime,target=/etc/localtime \
-  newnius/hadoop:2.7.1
+  newnius/hadoop:2.8.4
 ```
 
 ```bash
@@ -37,7 +37,7 @@ docker service create \
   --detach=true \
   --endpoint-mode dnsrr \
   --mount type=bind,source=/etc/localtime,target=/etc/localtime \
-  newnius/hadoop:2.7.1
+  newnius/hadoop:2.8.4
 ```
 
 ```bash
@@ -49,7 +49,7 @@ docker service create \
   --detach=true \
   --endpoint-mode dnsrr \
   --mount type=bind,source=/etc/localtime,target=/etc/localtime \
-  newnius/hadoop:2.7.1
+  newnius/hadoop:2.8.4
 ```
 
 ## Init for the first time
@@ -111,5 +111,5 @@ docker service create \
   --mount type=bind,source=/data/hadoop/config,target=/config/hadoop \
   --mount type=bind,source=/data/hadoop/hdfs/master,target=/tmp/hadoop-root \
   --mount type=bind,source=/data/hadoop/logs/master,target=/usr/local/hadoop/logs \
-  newnius/hadoop:2.7.1
+  newnius/hadoop:2.8.4
 ```

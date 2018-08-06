@@ -1,4 +1,4 @@
-FROM alpine:3.6
+FROM alpine:3.8
 
 MAINTAINER Newnius <newnius.cn@gmail.com>
 
@@ -23,10 +23,12 @@ RUN chown root:root /root/.ssh/config
 RUN echo "Port 2122" >> /etc/ssh/sshd_config
 
 # Install Hadoop
-RUN wget -O hadoop.tar.gz https://archive.apache.org/dist/hadoop/common/hadoop-2.8.1/hadoop-2.8.1.tar.gz && \
-tar -xzf hadoop.tar.gz -C /usr/local/ && rm hadoop.tar.gz
+ENV HADOOP_VER 2.8.1
 
-RUN ln -s /usr/local/hadoop-2.8.1 /usr/local/hadoop
+RUN wget -O hadoop.tar.gz https://archive.apache.org/dist/hadoop/common/hadoop-$HADOOP_VER/hadoop-$HADOOP_VER.tar.gz && \
+	tar -xzf hadoop.tar.gz -C /usr/local/ && rm hadoop.tar.gz
+
+RUN ln -s /usr/local/hadoop-$HADOOP_VER /usr/local/hadoop
 
 ENV HADOOP_HOME /usr/local/hadoop
 ENV PATH $PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
@@ -46,10 +48,9 @@ ADD mapred-site.xml $HADOOP_HOME/etc/hadoop/mapred-site.xml
 ADD yarn-site.xml $HADOOP_HOME/etc/hadoop/yarn-site.xml
 ADD slaves $HADOOP_HOME/etc/hadoop/slaves
 
+RUN sed -i "/^export JAVA_HOME/ s:.*:export JAVA_HOME=${JAVA_HOME}\nexport HADOOP_HOME=${HADOOP_HOME}\nexport HADOOP_PREFIX=${HADOOP_PREFIX}:" ${HADOOP_HOME}/etc/hadoop/hadoop-env.sh
 
-RUN sed -i "s|export JAVA_HOME=.*|export JAVA_HOME=${JAVA_HOME}\nexport HADOOP_HOME=${HADOOP_HOME}\nexport HADOOP_PREFIX=${HADOOP_PREFIX}|g" ${HADOOP_PREFIX}/etc/hadoop/hadoop-env.sh
-
-RUN sed -i "s|export HADOOP_CONF_DIR=.*|export HADOOP_CONF_DIR=${HADOOP_PREFIX}/etc/hadoop/|g" ${HADOOP_PREFIX}/etc/hadoop/hadoop-env.sh
+RUN sed -i '/^export HADOOP_CONF_DIR/ s:.*:export HADOOP_CONF_DIR=$HADOOP_PREFIX/etc/hadoop/:' $HADOOP_PREFIX/etc/hadoop/hadoop-env.sh
 
 WORKDIR $HADOOP_HOME
 

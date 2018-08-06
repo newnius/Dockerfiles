@@ -23,7 +23,7 @@ RUN chown root:root /root/.ssh/config
 RUN echo "Port 2122" >> /etc/ssh/sshd_config
 
 # Install Hadoop
-ENV HADOOP_VER 2.7.1
+ENV HADOOP_VER 2.8.4
 
 RUN wget -O hadoop.tar.gz https://archive.apache.org/dist/hadoop/common/hadoop-$HADOOP_VER/hadoop-$HADOOP_VER.tar.gz && \
 	tar -xzf hadoop.tar.gz -C /usr/local/ && rm hadoop.tar.gz
