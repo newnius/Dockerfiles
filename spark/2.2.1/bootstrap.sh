@@ -1,6 +1,11 @@
 #! /bin/bash
-# replace config
 
-cp /mnt/config/spark/* $SPARK_HOME/conf
+if [[ $1 == "master" ]]; then
+	/usr/local/spark/sbin/start-master.sh
+fi
 
-bash -c "/etc/bootstrap.sh -d"
+if [[ $1 == "slave" ]]; then
+	/usr/local/spark/sbin/start-slave.sh $2
+fi
+
+while true; do sleep 1000; done

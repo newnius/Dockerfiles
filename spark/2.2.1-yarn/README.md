@@ -2,6 +2,8 @@
 
 ## Create a spark cluster in swarm mode
 
+`--hostname` needs 1.13 or higher
+
 ```bash
 docker service create \
 --name spark-master \
