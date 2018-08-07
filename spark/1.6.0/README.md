@@ -1,82 +1,64 @@
-# based on sequenceiq/spark
+# Deploy Spark Cluster of standalone mode
 
-## Create a spark cluster in swarm mode
-
-`--hostname` needs 1.13 or higher
+## Master
 
 ```bash
 docker service create \
---name spark-master \
---network swarm-net \
---replicas 1 \
---endpoint-mode dnsrr \
-newnius/spark
+	--name spark-master \
+	--hostname spark-master \
+	--network swarm-net \
+	--replicas 1 \
+	--detach true \
+	--endpoint-mode dnsrr \
+	newnius/spark:1.6.0 master
 ```
+
+## Slaves
 
 ```bash
 docker service create \
---name spark-slave1 \
---network swarm-net \
---replicas 1 \
---endpoint-mode dnsrr \
-newnius/spark
+	--name spark-slave \
+	--network swarm-net \
+	--replicas 5 \
+	--detach true \
+	--endpoint-mode dnsrr \
+	newnius/spark:1.6.0 slave spark://spark-master:7077
 ```
+
+## Validate installation
+
+#### spark-submit PI
 
 ```bash
-docker service create \
---name spark-slave2 \
---network swarm-net \
---replicas 1 \
---endpoint-mode dnsrr \
-newnius/spark
+spark-submit \
+	--master spark://spark-master:7077 \
+	--deploy-mode cluster \
+	--class org.apache.spark.examples.JavaSparkPi \
+	./examples/jars/spark-examples_2.11-1.6.0.jar 100
 ```
 
-## Init && Test
+#### spark-shell HDFS wordcount
 
-In the first deploy, format dfs first
+Enter `spark-shell --master spark://spark-master:7077` to enter shell.
 
-### stop cluster (in master)
-`sbin/stop-yarn.sh`
-`sbin/stop-dfs.sh`
-`../spark/sbin/stop-all.sh`
+```shell
+val lines = sc.textFile("hdfs://hadoop-master:8020/user/root/input")
 
-### remove previous data (in all nodes)
-clear all data in /tmp in all nodes
+val words = lines.flatMap(_.split("\\s+"))
 
-### format hdfs (in master)
-```
-bin/hadoop namenode -format
-```
+val wc = words.map(word => (word, 1)).reduceByKey(_ + _)
 
-### start cluster (in master)
-`sbin/start-dfs.sh`
-`sbin/start-yarn.sh`
-`../spark/sbin/start-all.sh`
+wc.collect()
 
-### monitor cluster in browser
-
-YARN:  spark-master:8088
-
-HDFS:  spark-master:50070
-
-SPARK: spark-master:8080
-
-_Proxy needed, e.g. newnius/docker-proxy_
-
-## customized config
-
-```bash
-docker service create \
---name spark-master \
---network swarm-net \
---replicas 1 \
---mount type=bind,source=/mnt/data/spark/hdfs/master,target=/tmp/hadoop-root \
---mount type=bind,source=/mnt/data/spark/logs/master,target=/usr/local/hadoop/logs \
---mount type=bind,source=/mnt/data/spark/config/hadoop,target=/mnt/config/hadoop \
---mount type=bind,source=/mnt/data/spark/config/spark,target=/mnt/config/spark \
---mount type=bind,source=/mnt/data/spark/config/spark-yarn-remote-client,target=/mnt/config/spark-yarn-remote-client \
---endpoint-mode dnsrr \
-newnius/spark
+val cnt = words.map(word => 1).reduce(_ + _)
 ```
 
-You dont't need to put all files in dir, only add files needs modified.
+## Browse the web UI
+
+You can expose the ports in the script, but I'd rather not since the slaves shoule occupy the same ports.
+
+To access the web UI, deploy another (socks5) proxy to route the traffic.
+
+If you don't one, try [newnius/docker-proxy](https://hub.docker.com/r/newnius/docker-proxy/), it is rather easy to use.
+
+Visit [spark-master:8080](http://spark-master:8080) to view the cluster.
