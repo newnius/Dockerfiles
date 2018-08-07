@@ -13,11 +13,11 @@ ENV PATH $PATH:$JAVA_HOME/bin
 
 ENV SPARK_VER 2.2.1
 
-RUN wget https://archive.apache.org/dist/spark/spark-$SPARK_ENV/spark-$SPARK_ENV-bin-without-hadoop.tgz && \
-	tar -xvf spark-$SPARK_ENV-bin-without-hadoop.tgz -C /usr/local && \
-	rm spark-$SPARK_ENV-bin-without-hadoop.tgz
+RUN wget https://archive.apache.org/dist/spark/spark-$SPARK_VER/spark-$SPARK_VER-bin-without-hadoop.tgz && \
+	tar -xvf spark-$SPARK_VER-bin-without-hadoop.tgz -C /usr/local && \
+	rm spark-$SPARK_VER-bin-without-hadoop.tgz
 
-RUN ln -s /usr/local/spark-$SPARK_ENV-bin-without-hadoop /usr/local/spark
+RUN ln -s /usr/local/spark-$SPARK_VER-bin-without-hadoop /usr/local/spark
 
 ENV SPARK_HOME /usr/local/spark
 
