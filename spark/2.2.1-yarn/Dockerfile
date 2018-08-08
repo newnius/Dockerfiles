@@ -1,26 +1,34 @@
-FROM newnius/hadoop:2.8.1
+FROM alpine:3.8
 
 MAINTAINER Newnius <newnius.cn@gmail.com>
 
-RUN wget http://mirrors.ocf.berkeley.edu/apache/spark/spark-2.2.1/spark-2.2.1-bin-hadoop2.7.tgz && \
-	tar -xvf spark-2.2.1-bin-hadoop2.7.tgz -C /usr/local && \
-	rm spark-2.2.1-bin-hadoop2.7.tgz
+USER root
 
-RUN ln -s /usr/local/spark-2.2.1-bin-hadoop2.7 /usr/local/spark
+# Prerequisites
+RUN apk add --no-cache openssh openssl openjdk8-jre rsync bash procps coreutils
+
+ENV JAVA_HOME /usr/lib/jvm/java-1.8-openjdk
+
+ENV PATH $PATH:$JAVA_HOME/bin
+
+ENV SPARK_VER 2.2.1
+
+RUN wget https://archive.apache.org/dist/spark/spark-$SPARK_VER/spark-$SPARK_VER-bin-hadoop2.7.tgz && \
+	tar -xvf spark-$SPARK_VER-bin-hadoop2.7.tgz -C /usr/local && \
+	rm spark-$SPARK_VER-bin-hadoop2.7.tgz
+
+RUN ln -s /usr/local/spark-$SPARK_VER-bin-hadoop2.7 /usr/local/spark
 
 ENV SPARK_HOME /usr/local/spark
 
+ADD config/* /usr/local/hadoop/etc/hadoop/
+
+ENV HADOOP_CONF_DIR /usr/local/hadoop/etc/hadoop
+
 ENV PATH $PATH:$SPARK_HOME/bin
 
-# Default Conf Files
-ADD core-site.xml $HADOOP_HOME/etc/hadoop/core-site.xml
-ADD hdfs-site.xml $HADOOP_HOME/etc/hadoop/hdfs-site.xml
-ADD mapred-site.xml $HADOOP_HOME/etc/hadoop/mapred-site.xml
-ADD yarn-site.xml $HADOOP_HOME/etc/hadoop/yarn-site.xml
-ADD slaves $HADOOP_HOME/etc/hadoop/slaves
-
-ADD bootstrap.sh /etc/bootstrap-spark.sh
+ADD bootstrap.sh /etc/bootstrap.sh
 
 WORKDIR /usr/local/spark
 
-CMD ["/etc/bootstrap-spark.sh", "-d"]
+CMD ["/etc/bootstrap.sh"]

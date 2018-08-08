@@ -1,6 +1,10 @@
 #! /bin/bash
-# replace config
 
-cp /mnt/config/spark/* $SPARK_HOME/conf
+## replace config
+: ${EXTRA_CONF_DIR:=/config/hadoop}
 
-bash -c "/etc/bootstrap.sh -d"
+if [ -d "$EXTRA_CONF_DIR" ]; then
+	cp $EXTRA_CONF_DIR/* /usr/local/hadoop/etc/hadoop/
+fi
+
+while true; do sleep 1000; done
