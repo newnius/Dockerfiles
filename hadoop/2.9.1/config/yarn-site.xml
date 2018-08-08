@@ -46,4 +46,8 @@
 		<name>yarn.scheduler.minimum-allocation-mb</name>
 		<value>1024</value>
 	</property>	
+	<property>
+		<name>yarn.nodemanager.vmem-pmem-ratio</name>
+		<value>5</value>
+	</property>	
 </configuration>

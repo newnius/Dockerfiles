@@ -79,7 +79,7 @@ bin/hadoop dfs -mkdir -p /user/root/input
 bin/hadoop dfs -put etc/hadoop/* /user/root/input
 
 # submit the job
-bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.4.jar grep input output 'dfs[a-z.]+'
+bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples*.jar grep input output 'dfs[a-z.]+'
 ```
 
 ## Browse the web UI
