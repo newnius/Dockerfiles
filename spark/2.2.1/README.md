@@ -34,7 +34,7 @@ spark-submit \
 	--master spark://spark-master:7077 \
 	--deploy-mode cluster \
 	--class org.apache.spark.examples.JavaSparkPi \
-	./examples/jars/spark-examples_2.11-2.2.1.jar 100
+	./examples/jars/spark-examples*.jar 100
 ```
 
 #### spark-shell HDFS wordcount
