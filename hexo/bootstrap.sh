@@ -9,9 +9,13 @@ if ! [ "$(ls -A ./ )" ]; then
 	hexo init && npm install
 fi
 
+
+# install modules if not
+[ -d "node_modules" ] || npm install --from-lockfile
+
 # run hexo as production / developemnt mode
 if [[ $1 == "production" ]]; then
-				hexo server -s
+	hexo server -s
 else
-				hexo server
+	hexo server
 fi
