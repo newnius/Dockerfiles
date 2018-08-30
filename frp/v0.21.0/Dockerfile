@@ -17,4 +17,4 @@ RUN mv /frp_${VERSION}_linux_amd64 /frp
 
 WORKDIR /frp
 
-CMD ["/frp/frps", "-c /frp/frps.ini"]
+CMD ["/frp/frps", "-c", "/frp/frps.ini"]
