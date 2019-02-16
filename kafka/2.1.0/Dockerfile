@@ -1,0 +1,20 @@
+FROM openjdk:8-jre-alpine
+
+MAINTAINER Newnius <newnius.cn@gmail.com>
+
+# Prerequisites
+RUN apk add --no-cache bash
+
+# Install Kafka
+RUN wget -O kafka.tgz http://us.mirrors.quenda.co/apache/kafka/2.1.0/kafka_2.11-2.1.0.tgz && \
+	tar -xzf kafka.taz -C /usr/local/ && rm kafka.tgz
+
+RUN ln -s /usr/local/kafka_2.11-2.1.0 /usr/local/kafka
+
+ENV KAFKA_HOME /usr/local/kafka
+
+WORKDIR $KAFKA_HOME
+
+ADD start_kafka.sh /etc/start_kafka.sh
+
+CMD ["/etc/start_kafka.sh"]
