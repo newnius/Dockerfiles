@@ -14,13 +14,13 @@ Documents: [Hexo](https://hexo.io/)
 
 ```
 docker service create \
---name hexo \
---replicas 1 \
---publish 4000:4000 \
---env GIT_EMAIL="username@example.com" \
---env GIT_NAME="username" \
---mount type=bind,source=/path/to/blog,target=/blog \
-newnius/hexo
+	--name hexo \
+	--replicas 1 \
+	--publish 4000:4000 \
+	--env GIT_EMAIL="username@example.com" \
+	--env GIT_NAME="username" \
+	--mount type=bind,source=/path/to/blog,target=/blog \
+	quickdeploy/hexo:3.8.0
 ```
 
 ## Notice
