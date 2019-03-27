@@ -4,7 +4,7 @@ MAINTAINER Newnius <newnius.cn@gmail.com>
 
 RUN apk --no-cache add git
 
-RUN npm install hexo-cli@3.4.4 -g
+RUN npm install hexo-cli -g
 
 ADD bootstrap.sh /etc/bootstrap.sh
 
