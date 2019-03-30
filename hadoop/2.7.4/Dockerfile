@@ -5,7 +5,7 @@ MAINTAINER Newnius <newnius.cn@gmail.com>
 USER root
 
 # Prerequisites
-RUN apk add --no-cache openssh openssl openjdk8-jre rsync bash procps
+RUN apk add --no-cache openssh openssl openjdk8-jre rsync bash procps nss
 
 ENV JAVA_HOME /usr/lib/jvm/java-1.8-openjdk
 ENV PATH $PATH:$JAVA_HOME/bin
