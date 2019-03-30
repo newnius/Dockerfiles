@@ -22,6 +22,8 @@ RUN chown root:root /root/.ssh/config
 
 RUN echo "Port 2122" >> /etc/ssh/sshd_config
 
+RUN passwd -u root
+
 # Install Hadoop
 ENV HADOOP_VER 2.7.4
 
