@@ -1,11 +1,8 @@
 #!/bin/bash
 
 ## replace config
-: ${EXTRA_CONF_DIR:=/config/hive}
-
-if [ -d "$EXTRA_CONF_DIR" ]; then
-	cp $EXTRA_CONF_DIR/* /usr/local/hive/conf
-fi
+test -d /config/hadoop && cp /config/hadoop/* /usr/local/hadoop/etc/hadoop/
+test -d /config/hive && cp /config/hive/* /usr/local/hive/conf/
 
 hive --service metastore
 
