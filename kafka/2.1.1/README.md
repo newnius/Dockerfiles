@@ -12,7 +12,7 @@ docker service create \
 	--env BROKER_ID=1 \
 	--env ZOOKEEPER_CONNECT=zookeeper_node1:2181,zookeeper_node2:2181,zookeeper_node3:2181 \
 	--endpoint-mode dnsrr \
-	newnius/kafka:2.1.0
+	newnius/kafka:2.1.1
 ```
 
 ## Configuration
@@ -38,6 +38,6 @@ docker service create \
 	--replicas 1 \
 	--endpoint-mode dnsrr \
 	--mount type=bind,src=/data/kafka/,dst=/config/kafka/,readonly \
-	newnius/kafka:2.1.0
+	newnius/kafka:2.1.1
 ```
 
