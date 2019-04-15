@@ -10,12 +10,12 @@ fi
 
 if ! [[ -z "${BROKER_ID}" ]]; then
 	sed -i '/broker.id=/d' /usr/local/kafka/config/server.properties
-	echo "broker.id=$BROKER_ID" >> /usr/local/kafka/config/server.properties
+	echo -e "\nbroker.id=$BROKER_ID" >> /usr/local/kafka/config/server.properties
 fi
 
 if ! [[ -z "${ZOOKEEPER_CONNECT}" ]]; then
 	sed -i '/zookeeper.connect=/d' /usr/local/kafka/config/server.properties
-	echo "zookeeper.connect=$ZOOKEEPER_CONNECT" >> /usr/local/kafka/config/server.properties
+	echo -e "\nzookeeper.connect=$ZOOKEEPER_CONNECT" >> /usr/local/kafka/config/server.properties
 fi
 
 bash /usr/local/kafka/bin/kafka-server-start.sh /usr/local/kafka/config/server.properties
