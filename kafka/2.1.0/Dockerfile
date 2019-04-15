@@ -6,7 +6,7 @@ MAINTAINER Newnius <newnius.cn@gmail.com>
 RUN apk add --no-cache bash
 
 # Install Kafka
-RUN wget -O kafka.tgz http://us.mirrors.quenda.co/apache/kafka/2.1.0/kafka_2.11-2.1.0.tgz && \
+RUN wget -O kafka.tgz https://archive.apache.org/dist/kafka/2.1.0/kafka_2.11-2.1.0.tgz && \
 	tar -xzf kafka.tgz -C /usr/local/ && rm kafka.tgz
 
 RUN ln -s /usr/local/kafka_2.11-2.1.0 /usr/local/kafka
