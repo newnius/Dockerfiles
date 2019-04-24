@@ -35,7 +35,15 @@
   </property>
   <property>
     <name>hbase.zookeeper.quorum</name>
-    <value>zookeeper_node1,zookeeper_node2,zookeeper_node3</value>
+    <value>zookeeper-node1,zookeeper-node2,zookeeper-node3</value>
+  </property>
+  <property>
+    <name>hbase.regionserver.thrift.framed</name>
+    <value>true</value>
+  </property>
+  <property>
+    <name>hbase.regionserver.thrift.compact</name>
+    <value>true</value>
   </property>
   <property>
     <name>hbase.regionserver.dns.interface</name>
