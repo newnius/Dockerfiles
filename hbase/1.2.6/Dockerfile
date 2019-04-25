@@ -10,8 +10,6 @@ RUN apk add --no-cache openssh openssl openjdk8-jre rsync bash procps nss
 ENV JAVA_HOME /usr/lib/jvm/java-1.8-openjdk
 ENV PATH $PATH:$JAVA_HOME/bin
 
-ENV HBASE_MANAGES_ZK false
-
 # Passwordless SSH
 RUN ssh-keygen -q -N "" -t dsa -f /etc/ssh/ssh_host_dsa_key
 RUN ssh-keygen -q -N "" -t rsa -f /etc/ssh/ssh_host_rsa_key
@@ -41,6 +39,7 @@ ENV PATH $PATH:$HBASE_HOME/bin
 
 # Add default conf files of 1 master, 2 back server, 3 engionserver
 ADD hbase-site.xml $HBASE_HOME/conf
+ADD hbase-env.sh $HBASE_HOME/conf
 ADD regionservers $HBASE_HOME/conf
 ADD backup-masters $HBASE_HOME/conf
 

@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# set region server hostname
+sed -i "s/HOSTNAME/$(hostname)/" /usr/local/hbase/conf/hbase-site.xml 
+
 ## replace config
 : ${EXTRA_CONF_DIR:=/config/hbase}
 
