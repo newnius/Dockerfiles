@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 if ! [[ -z "${RPC_SECRET}" ]]; then
 	sed -i '/rpc-secret=/d' /etc/aria2/aria2.conf
