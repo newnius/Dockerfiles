@@ -11,12 +11,11 @@ ENV CGO_ENABLED=${CGO}
 ENV GOOS=linux
 ENV GO111MODULE=on
 
-
 RUN apk add --no-cache git
 
 RUN git clone https://github.com/gohugoio/hugo.git /hugo
 
-RUN cd /hugo
+WORKDIR /hugo
 
 RUN go install
 
