@@ -4,7 +4,7 @@ MAINTAINER Newnius <newnius.cn@gmail.com>
 
 RUN apk add --no-cache rsync
 
-RUN ln -s /var/log/rsyncd.log /dev/stdout
+RUN ln -s /dev/stdout /var/log/rsyncd.log
 
 ADD bootstrap.sh /etc/bootstrap.sh
 
