@@ -11,7 +11,7 @@ docker run \
 	--publish 51413:51413 \
 	--publish 51413:51413/udp \
 	--mount type=bind,src=/etc/localtime,dst=/etc/localtime,readonly \
-	--mount type=bind,src=/Downloads,dst=/root/Dowloads/ \
+	--mount type=bind,src=/Downloads/,dst=/root/Downloads/ \
 	--mount type=bind,src=/data/trasmission/config/,dst=/var/lib/transmission/config/ \
 	newnius/transmission
 ```
