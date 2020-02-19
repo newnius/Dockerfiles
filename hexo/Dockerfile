@@ -1,4 +1,4 @@
-FROM node:9.3-alpine
+FROM node:13-alpine
 
 MAINTAINER Newnius <newnius.cn@gmail.com>
 
