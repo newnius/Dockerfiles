@@ -20,7 +20,7 @@ docker service create \
 	--env GIT_EMAIL="username@example.com" \
 	--env GIT_NAME="username" \
 	--mount type=bind,source=/path/to/blog,target=/blog \
-	quickdeploy/hexo:3.8.0
+	newnius/hexo
 ```
 
 ## Notice
