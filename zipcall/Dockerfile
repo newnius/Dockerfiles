@@ -4,7 +4,7 @@ MAINTAINER Newnius <newnius.cn@gmail.com>
 
 RUN apk --no-cache add git
 
-RUN git clone https://github.com/ianramzy/decentralized-video-chat.git /zipcall
+RUN git clone https://code.newnius.com/newnius/zipcall.git
 
 RUN cd /zipcall && npm install
 
