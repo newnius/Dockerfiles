@@ -15,4 +15,6 @@ MAINTAINER Newnius <newnius.cn@gmail.com>
 
 COPY --from=builder /workspace/restic /usr/local/bin/
 
+ENTRYPOINT []
+
 CMD [ "restic" ]
