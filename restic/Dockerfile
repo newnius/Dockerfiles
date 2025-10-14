@@ -1,6 +1,6 @@
 FROM golang AS builder
 
-RUN git clone https://github.com/restic/restic.git /workspace
+RUN git clone https://github.com/restic/restic.git -b v0.18.1 /workspace
 
 WORKDIR /workspace/
 
